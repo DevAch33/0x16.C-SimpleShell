@@ -8,5 +8,8 @@
 
 /* string.c */
 int _strlen (char *);
+int _strcmp (char *,char *);
+char *_strcat(char *, const char *);
+char *_strcpy(char *, const char *);
 
 #endif
