@@ -80,3 +80,26 @@ char *_strcpy(char *dest, const char *src)
 	dest[i] = 0;
 	return (dest);
 }
+
+/**
+ * _strdup - functions are used to duplicate a string.
+ * @st: String to duplicated
+ *
+ * Return: Pointer to null-terminated byte string.
+ */
+char *_strdup(const char *st)
+{
+	int length = 0;
+	char *r;
+
+	if (st == NULL)
+		return (NULL);
+	while (*st++)
+		length++;
+	r = malloc(sizeof(char) * (length + 1));
+	if (!r)
+		return (NULL);
+	for (length++; length--;)
+		r[length] = *--st;
+	return (r);
+}
