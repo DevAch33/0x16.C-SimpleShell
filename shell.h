@@ -18,5 +18,6 @@ char *_strcpy(char *, const char *);
 char *_strdup(const char *);
 
 // Memory function
-char *_memset(char *, char, unsigned int)
+char *_memset(char *, char, unsigned int);
+void *_realloc(void *, unsigned int, unsigned int);
 #endif

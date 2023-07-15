@@ -8,11 +8,42 @@
  *
  * Return: pointer to the memory area st.
  */
-char *_memset(char *s, char c, unsigned int n)
+char *_memset(char *st, char c, unsigned int n)
 {
 	unsigned int i;
 
 	for (i = 0; i < n; i++)
 		st[i] = c;
 	return (st);
+}
+
+/**
+ * _realloc - allocate and free dynamic memory.
+ * @pnt: Pointer to previous allocated block.
+ * @old_s: Byte size of previous block.
+ * @new_s: Byte size of previous block.
+ *
+ * Return: Pointer to the reallocated memory block.
+ */
+void *_realloc(void *pnt, unsigned int old_s, unsigned int new_s)
+{
+	char *p;
+
+	if (!pnt)
+		return (malloc(new_s));
+	if (!new_s)
+		return (free(pnt), NULL);
+	if (new_s == old_s)
+		return (pnt);
+
+	p = malloc(new_s);
+	if (!p)
+		return (NULL);
+
+	old_s = old_s < new_s ? old_s : new_s;
+
+	while (old_s--)
+		p[old_s] = ((char *)pnt)[old_s];
+	free(pnt);
+	return (p);
 }
