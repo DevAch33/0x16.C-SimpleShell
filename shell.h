@@ -23,6 +23,19 @@
 #define CMD_CHAIN	3
 
 /**
+ * struct liststr - singly linked list
+ * @no: the number field
+ * @st: a string
+ * @next: points to the next node
+ */
+typedef struct liststr
+{
+	int no;
+	char *st;
+	struct liststr *next;
+} list_t;
+
+/**
  * struct passinfo - contains pseudo-arguements to pass into a function,
  * allowing uniform prototype for function pointer struct
  * @arg: a string generated from getline containing arguements
@@ -70,19 +83,6 @@ typedef struct passinfo
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
-
-/**
- * struct liststr - singly linked list
- * @no: the number field
- * @st: a string
- * @next: points to the next node
- */
-typedef struct liststr
-{
-	int no;
-	char *st;
-	struct liststr *next;
-} list_t;
 
 /* string.c */
 int _strlen(char *);
