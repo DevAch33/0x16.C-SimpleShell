@@ -71,6 +71,19 @@ typedef struct passinfo
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
 
+/**
+ * struct liststr - singly linked list
+ * @no: the number field
+ * @st: a string
+ * @next: points to the next node
+ */
+typedef struct liststr
+{
+	int no;
+	char *st;
+	struct liststr *next;
+} list_t;
+
 /* string.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
