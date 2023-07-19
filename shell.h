@@ -59,10 +59,10 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-	char *arg;
-	char **argv;
+	char *ag;
+	char **agv;
 	char *path;
-	int argc;
+	int agc;
 	unsigned int line_count;
 	int err_num;
 	int linecount_flag;
@@ -94,6 +94,8 @@ char *_strdup(const char *);
 /* Memory function */
 char *_memset(char *, char, unsigned int);
 void *_realloc(void *, unsigned int, unsigned int);
+void ffree(char **);
+int bfree(void **);
 
 /* strList.c module */
 list_t *add_node(list_t **, const char *, int);
@@ -102,8 +104,19 @@ size_t print_list_str(const list_t *);
 int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);
 
-/* strFunction2.c */
+/* strFunctions2.c */
 void _puts(char *);
 int _putchar(char);
+char **strtow(char *, char *);
 
+/* errStrFunctions.c */
+void _eputs(char *);
+int _eputchar(char);
+int _putfd(char c, int fd);
+int _putsfd(char *st, int fd);
+
+/* infoFunctions.c  */
+void clear_info(info_t *);
+void set_info(info_t *, char **);
+void free_info(info_t *, int);
 #endif

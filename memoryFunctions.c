@@ -47,3 +47,36 @@ void *_realloc(void *pnt, unsigned int old_s, unsigned int new_s)
 	free(pnt);
 	return (p);
 }
+
+/**
+* ffree - frees a string of strings
+* @ss: string of strings
+*/
+void ffree(char **ss)
+{
+	char **a = ss;
+
+	if (!ss)
+		return;
+	while (*ss)
+		free(*ss++);
+	free(a);
+}
+
+/**
+* bfree - frees a pointer and NULLs the address
+* @apf: address of the pointer to free
+*
+* Return: 1 if freed, otherwise 0.
+*/
+int bfree(void **apf)
+{
+	if (apf && *apf)
+	{
+		free(*apf);
+		*apf = NULL;
+		return (1);
+	}
+	return (0);
+}
+
