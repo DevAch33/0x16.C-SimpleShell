@@ -80,7 +80,6 @@ int replace_alias(info_t *info)
 	list_t *node;
 	char *p;
 
-<<<<<<< HEAD
 	for (i = 0; i < 10; i++)
 	{
 		node = node_starts_with(info->alias, info->agv[0], '=');
@@ -96,23 +95,6 @@ int replace_alias(info_t *info)
 		info->agv[0] = p;
 	}
 	return (1);
-=======
-    for (i = 0; i < 10; i++)
-    {
-        node = node_starts_with(info->my_alias, info->agv[0], '=');
-        if (!node)
-            return (0);
-        free(info->agv[0]);
-        p = _strchr(node->st, '=');
-        if (!p)
-            return (0);
-        p = _strdup(p + 1);
-        if (!p)
-            return (0);
-        info->agv[0] = p;
-    }
-    return (1);
->>>>>>> afc5f147c461edf2103bda90b4036257dcedc09e
 }
 
 /**
@@ -126,7 +108,6 @@ int replace_vars(info_t *info)
 	int i = 0;
 	list_t *node;
 
-<<<<<<< HEAD
 	for (i = 0; info->agv[i]; i++)
 	{
 		if (info->agv[i][0] != '$' || !info->agv[i][1])
@@ -150,27 +131,6 @@ int replace_vars(info_t *info)
 		replace_string(&info->agv[i], _strdup(""));
 	}
 	return (0);
-=======
-        if (!_strcmp(info->agv[i], "$?"))
-        {
-            replace_string(&(info->agv[i]), _strdup(convert_number(info->status, 10, 0)));
-            continue;
-        }
-        if (!_strcmp(info->agv[i], "$$"))
-        {
-            replace_string(&(info->agv[i]), _strdup(convert_number(getpid(), 10, 0)));
-            continue;
-        }
-        node = node_starts_with(info->my_env, &info->agv[i][1], '=');
-        if (node)
-        {
-            replace_string(&(info->agv[i]), _strdup(_strchr(node->st, '=') + 1));
-            continue;
-        }
-        replace_string(&info->agv[i], _strdup(""));
-    }
-    return (0);
->>>>>>> afc5f147c461edf2103bda90b4036257dcedc09e
 }
 
 /**

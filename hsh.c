@@ -54,7 +54,6 @@ int hsh(info_t *info, char **agv)
  */
 int find_builtin(info_t *info)
 {
-<<<<<<< HEAD
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", myexit},
@@ -68,40 +67,13 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 	for (i = 0; builtintbl[i].type; i++)
-	{
 		if (_strcmp(info->agv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
 			built_in_ret = builtintbl[i].func(info);
 			break;
 		}
-	}
 	return (built_in_ret);
-=======
-    int i, built_in_ret = -1;
-    builtin_table builtintbl[] = {
-        {"exit", my_exit},
-        {"env", my_env},
-        {"help", my_help},
-        {"history", my_history},
-        {"setenv", my_setenv},
-        {"unsetenv", _myunsetenv},
-        {"cd", my_cd},
-        {"alias", my_alias},
-        {NULL, NULL}
-    };
-
-    for (i = 0; builtintbl[i].type; i++)
-    {
-        if (_strcmp(info->agv[0], builtintbl[i].type) == 0)
-        {
-            info->line_count++;
-            built_in_ret = builtintbl[i].func(info);
-            break;
-        }
-    }
-    return (built_in_ret);
->>>>>>> afc5f147c461edf2103bda90b4036257dcedc09e
 }
 
 /**
