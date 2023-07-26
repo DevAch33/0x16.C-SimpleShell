@@ -98,6 +98,12 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
+/* hsh.c */
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
+
 /* string.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
@@ -165,7 +171,7 @@ char *_getenv(info_t *, const char *);
 int _myenv(info_t *);
 int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
+int poplate_env_list(info_t *);
 
 /* env2.c module */
 char **get_environ(info_t *);
