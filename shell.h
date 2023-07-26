@@ -116,8 +116,8 @@ int my_help(info_t *);
 int my_history(info_t *);
 int uset_alias(info_t *, char *);
 int set_alias(info_t *, char *);
-int print_alias(list_t *)
-int my_alias(info_t *)
+int print_alias(list_t *);
+int my_alias(info_t *);
 
 /* strList.c module */
 list_t *add_node(list_t **, const char *, int);
@@ -163,6 +163,19 @@ int populate_env_list(info_t *);
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
+
+/* more_functions.c */
+int interactive(info_t *);
+int is_delim(char, char *);
+int _isalpha(int);
+int _atoi(char *);
+
+/* more_functions2.c */
+int _erratoi(char *);
+void print_error(info_t *, char *);
+int print_d(int, int);
+char *convert_number(long int, int, int);
+void remove_comments(char *);
 
 #endif
 
