@@ -75,7 +75,7 @@ typedef struct passinfo
 	int status;
 
 	char **cmd_buf;
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int cmd_buf_type;
 	int readfd;
 	int histcount;
 } info_t;
@@ -83,6 +83,16 @@ typedef struct passinfo
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
+/**
+ *struct builtin - contains a builtin string and related function
+ *@type: the builtin command flag
+ *@func: the function
+ */
+typedef struct builtin
+{
+	char *type;
+	int (*func)(info_t *);
+} builtin_table;
 
 /* string.c */
 int _strlen(char *);
@@ -96,6 +106,18 @@ char *_memset(char *, char, unsigned int);
 void *_realloc(void *, unsigned int, unsigned int);
 void ffree(char **);
 int bfree(void **);
+
+/* builtin_emulators1.c */
+int my_exit(info_t *);
+int my_cd(info_t *);
+int my_help(info_t *);
+
+/* builtin_emulators2.c */
+int my_history(info_t *);
+int uset_alias(info_t *, char *);
+int set_alias(info_t *, char *);
+int print_alias(list_t *)
+int my_alias(info_t *)
 
 /* strList.c module */
 list_t *add_node(list_t **, const char *, int);
@@ -122,6 +144,25 @@ void free_info(info_t *, int);
 
 /* Conversion function */
 char *convert_number(int num, int base, int uppercase);
+
+/* chain.c */
+int is_chain(info_t *, char *, size_t *);
+void check_chain(info_t *, char *, size_t *, size_t, size_t);
+int replace_alias(info_t *);
+int replace_vars(info_t *);
+int replace_string(char **, char *);
+
+/* env.c module */
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int populate_env_list(info_t *);
+
+/* env2.c module */
+char **get_environ(info_t *);
+int _unsetenv(info_t *, char *);
+int _setenv(info_t *, char *, char *);
 
 #endif
 

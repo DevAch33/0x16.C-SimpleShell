@@ -1,9 +1,8 @@
 #include "shell.h"
 
 /**
- * my_exit - Exits the shell
- * @info: Pointer to the structure containing potential arguments. Used to maintain
- *         constant function prototype.
+ * my_exit - Exits the shell.
+ * @info: Pointer to the structure containing potential arguments. Used to maintain constant function prototype.
  *
  * Return: Exits with a given exit status (0) if info->agv[1] != "exit"
  */
@@ -11,7 +10,7 @@ int my_exit(info_t *info)
 {
 	int exit_code;
 
-	if (info->agv[1])  /* If there is an exit argument */
+	if (info->agv[1])
 	{
 		exit_code = str_to_int(info->agv[1]);
 		if (exit_code == -1)
@@ -31,8 +30,7 @@ int my_exit(info_t *info)
 
 /**
  * my_cd - Changes the current directory of the process
- * @info: Pointer to the structure containing potential arguments. Used to maintain
- *         constant function prototype.
+ * @info: Pointer to the structure containing potential arguments. Used to maintain constant function prototype.
  *
  * Return: Always 0
  */
@@ -49,8 +47,7 @@ int my_cd(info_t *info)
 	{
 		new_dir = _getenv(info, "HOME=");
 		if (!new_dir)
-			chdir_ret = /* TODO: What should this be? */
-				chdir((new_dir = _getenv(info, "PWD=")) ? new_dir : "/");
+			chdir_ret = chdir((new_dir = _getenv(info, "PWD=")) ? new_dir : "/");
 		else
 			chdir_ret = chdir(new_dir);
 	}
@@ -64,8 +61,7 @@ int my_cd(info_t *info)
 		}
 		_eputs(_getenv(info, "OLDPWD="));
 		_eputchar('\n');
-		chdir_ret = /* TODO: What should this be? */
-			chdir((new_dir = _getenv(info, "OLDPWD=")) ? new_dir : "/");
+		chdir_ret = chdir((new_dir = _getenv(info, "OLDPWD=")) ? new_dir : "/");
 	}
 	else
 		chdir_ret = chdir(info->agv[1]);
@@ -86,8 +82,7 @@ int my_cd(info_t *info)
 
 /**
  * my_help - Displays help information
- * @info: Pointer to the structure containing potential arguments. Used to maintain
- *         constant function prototype.
+ * @info: Pointer to the structure containing potential arguments. Used to maintain constant function prototype.
  *
  * Return: Always 0
  */
@@ -96,9 +91,9 @@ int my_help(info_t *info)
 	char **arg_array;
 
 	arg_array = info->agv;
-	_puts("help call works. Function not yet implemented \n");
+	_eputs("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_array); /* Temp att_unused workaround */
+		_eputs(*arg_array);
 	return 0;
 }
 
