@@ -83,7 +83,7 @@ int replace_alias(info_t *info)
 
     for (i = 0; i < 10; i++)
     {
-        node = node_starts_with(info->myalias, info->agv[0], '=');
+        node = node_starts_with(info->my_alias, info->agv[0], '=');
         if (!node)
             return (0);
         free(info->agv[0]);
@@ -124,7 +124,7 @@ int replace_vars(info_t *info)
             replace_string(&(info->agv[i]), _strdup(convert_number(getpid(), 10, 0)));
             continue;
         }
-        node = node_starts_with(info->myenv, &info->agv[i][1], '=');
+        node = node_starts_with(info->my_env, &info->agv[i][1], '=');
         if (node)
         {
             replace_string(&(info->agv[i]), _strdup(_strchr(node->st, '=') + 1));

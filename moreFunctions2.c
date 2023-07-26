@@ -11,7 +11,7 @@ int str_to_int(char *s)
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++; /* TODO: why does this make main return 255? */
+		s++;
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
@@ -39,7 +39,7 @@ void print_error(info_t *info, char *estr)
 	_eputs(": ");
 	print_d(info->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_eputs(info->argv[0]);
+	_eputs(info->agv[0]);
 	_eputs(": ");
 	_eputs(estr);
 }
