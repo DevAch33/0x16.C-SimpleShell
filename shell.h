@@ -175,18 +175,32 @@ char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
-/* more_functions1.c */
+/* moreFunctions1.c */
 int interactive(info_t *);
 int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-/* more_functions2.c */
+/* moreFunctions2.c */
 int str_to_int(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
+
+/* path.c */
+int is_cmd(info_t *, char *);
+char *dup_chars(char *, int, int);
+char *find_path(info_t *, char *, char *);
+
+/* stringFunctions3.c */
+char *_strncpy(char *, char *, int);
+char *_strncat(char *, char *, int);
+char *_strchr(char *, char);
+
+/* stringFunctions4.c */
+char **strtow(char *, char *);
+char **strtow2(char *, char);
 
 #endif
 
