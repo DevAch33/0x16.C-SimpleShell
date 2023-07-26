@@ -18,12 +18,12 @@ int my_history(info_t *info)
  *
  * Return: Always 0 on success, 1 on error
  */
-int unset_alias(info_t *info, char *str)
+int unset_alias(info_t *info, char *st)
 {
 	char *p, c;
 	int ret;
 
-	p = _strchr(str, '=');
+	p = strchr(st, '=');
 	if (!p)
 		return 1;
 	c = *p;
@@ -41,18 +41,18 @@ int unset_alias(info_t *info, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *info, char *str)
+int set_alias(info_t *info, char *st)
 {
 	char *p;
 
-	p = _strchr(str, '=');
+	p = strchr(st, '=');
 	if (!p)
 		return 1;
 	if (!*++p)
-		return unset_alias(info, str);
+		return unset_alias(info, st);
 
-	unset_alias(info, str);
-	return add_node_end(&(info->alias), str, 0) == NULL;
+	unset_alias(info, st);
+	return add_node_end(&(info->alias), st, 0) == NULL;
 }
 
 /**
@@ -67,7 +67,7 @@ int print_alias(list_t *node)
 
 	if (node)
 	{
-		p = _strchr(node->str, '=');
+		p = strchr(node->st, '=');
 		for (a = node->str; a <= p; a++)
 			_putchar(*a);
 		_putchar('\'');
@@ -101,7 +101,7 @@ int my_alias(info_t *info)
 	}
 	for (i = 1; info->agv[i]; i++)
 	{
-		p = _strchr(info->agv[i], '=');
+		p = strchr(info->agv[i], '=');
 		if (p)
 			set_alias(info, info->agv[i]);
 		else

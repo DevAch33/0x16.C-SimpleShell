@@ -22,6 +22,10 @@
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
+/* converting number() */
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED	2
+
 /**
  * struct liststr - singly linked list
  * @no: the number field
@@ -119,12 +123,19 @@ int set_alias(info_t *, char *);
 int print_alias(list_t *);
 int my_alias(info_t *);
 
-/* strList.c module */
+/* strList1.c module */
 list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
 int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);
+
+/* strList1.c module */
+size_t list_len(const list_t *);
+char **list_to_strings(list_t *);
+size_t print_list(const list_t *);
+list_t *node_starts_with(list_t *, char *, char);
+ssize_t get_node_index(list_t *, list_t *);
 
 /* strFunctions2.c */
 void _puts(char *);
@@ -164,14 +175,14 @@ char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
-/* more_functions.c */
+/* more_functions1.c */
 int interactive(info_t *);
 int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
 /* more_functions2.c */
-int _erratoi(char *);
+int str_to_int(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
