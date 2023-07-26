@@ -89,7 +89,7 @@ int my_alias(info_t *info)
 	char *p = NULL;
 	list_t *node = NULL;
 
-	if (info->argc == 1)
+	if (info->agc == 1)
 	{
 		node = info->alias;
 		while (node)
@@ -99,13 +99,13 @@ int my_alias(info_t *info)
 		}
 		return 0;
 	}
-	for (i = 1; info->argv[i]; i++)
+	for (i = 1; info->agv[i]; i++)
 	{
-		p = _strchr(info->argv[i], '=');
+		p = _strchr(info->agv[i], '=');
 		if (p)
-			set_alias(info, info->argv[i]);
+			set_alias(info, info->agv[i]);
 		else
-			print_alias(node_starts_with(info->alias, info->argv[i], '='));
+			print_alias(node_starts_with(info->alias, info->agv[i], '='));
 	}
 
 	return 0;
