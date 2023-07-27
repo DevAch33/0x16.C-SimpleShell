@@ -130,7 +130,7 @@ int my_help(info_t *);
 int my_history(info_t *);
 int my_alias(info_t *);
 
-/* builtin_emulators2.c */
+/* builtinEmulators2.c */
 int uset_alias(info_t *, char *);
 int set_alias(info_t *, char *);
 int print_alias(list_t *);
