@@ -170,9 +170,9 @@ int replace_string(char **, char *);
 
 /* env1.c module */
 char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
+int my_env(info_t *);
+int my_setenv(info_t *);
+int my_unsetenv(info_t *);
 int poplate_env_list(info_t *);
 
 /* env2.c module */
