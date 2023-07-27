@@ -123,7 +123,7 @@ void *_realloc(void *, unsigned int, unsigned int);
 void ffree(char **);
 int bfree(void **);
 
-/* builtin_emulators1.c */
+/* builtinEmulators1.c */
 int my_exit(info_t *);
 int my_cd(info_t *);
 int my_help(info_t *);
