@@ -215,6 +215,8 @@ char *_strdup(const char *);
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
+void _puts(char *);
+int _putchar(char);
 
 /* stringFunctions4.c */
 char **strtow(char *, char *);
