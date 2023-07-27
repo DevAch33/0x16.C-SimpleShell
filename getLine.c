@@ -15,7 +15,6 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 
 	if (!*len)
 	{
-		
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
@@ -52,14 +51,14 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
  */
 ssize_t get_input(info_t *info)
 {
-	static char *buf; 
+	static char *buf;
 	static size_t i, j, len;
-	ssize_t r = 0;
-	char **buf_p = &(info->arg), *p;
+	size_t r = 0;
+	char **buf_p = &(info->ag), *p;
 
 	_putchar(BUF_FLUSH);
 	r = input_buf(info, &buf, &len);
-	if (r == -1) 
+	if (r == -1)
 		return (-1);
 	if (len)
 	{
@@ -86,7 +85,7 @@ ssize_t get_input(info_t *info)
 	}
 
 	*buf_p = buf;
-	return (r); 
+	return (r);
 }
 
 /**

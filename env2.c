@@ -2,24 +2,23 @@
 
 /**
  * get_environ - Returns the string array copy of our environ.
- * @info: Structure containing potential arguments. Used to maintain constant function prototype.
+ * @info: Structure containing potential arguments.
+ *
  * Return: The pointer to the string array representing the environment.
  */
 char **get_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-		free_str_array(info->environ); // Free previous environ data if it exists
 		info->environ = list_to_strings(info->env);
 		info->env_changed = 0;
 	}
-
-	return info->environ;
+	return (info->environ);
 }
 
 /**
  * _unsetenv - Remove an environment variable.
- * @info: Structure containing potential arguments. Used to maintain constant function prototype.
+ * @info: Structure containing potential argument.
  * @var: The string env var property.
  *
  * Return: 1 if the environment variable was deleted, 0 otherwise.
@@ -31,11 +30,11 @@ int _unsetenv(info_t *info, char *var)
 	char *p;
 
 	if (!node || !var)
-		return 0;
+		return (0);
 
 	while (node)
 	{
-		p = _starts_with(node->st, var);
+		p = starts_with(node->st, var);
 		if (p && *p == '=')
 		{
 			info->env_changed = delete_node_at_index(&(info->env), i);
@@ -46,12 +45,12 @@ int _unsetenv(info_t *info, char *var)
 		node = node->next;
 		i++;
 	}
-	return info->env_changed;
+	return (info->env_changed);
 }
 
 /**
  * _setenv - Initialize a new environment variable or modify an existing one.
- * @info: Structure containing potential arguments. Used to maintain constant function prototype.
+ * @info: Structure containing potential arguments.
  * @var: The string env var property.
  * @value: The string env var value.
  *
@@ -64,30 +63,29 @@ int _setenv(info_t *info, char *var, char *value)
 	char *p;
 
 	if (!var || !value)
-		return 0;
+		return (0);
 
 	buf = malloc(_strlen(var) + _strlen(value) + 2);
 	if (!buf)
-		return 1;
+		return (1);
 	_strcpy(buf, var);
 	_strcat(buf, "=");
 	_strcat(buf, value);
 	node = info->env;
 	while (node)
 	{
-		p = _starts_with(node->st, var);
+		p = starts_with(node->st, var);
 		if (p && *p == '=')
 		{
-			free(node->st); // Free previous environment variable data
+			free(node->st);
 			node->st = buf;
 			info->env_changed = 1;
-			return 0;
+			return (0);
 		}
 		node = node->next;
 	}
 	add_node_end(&(info->env), buf, 0);
 	free(buf);
 	info->env_changed = 1;
-	return 0;
+	return (0);
 }
-

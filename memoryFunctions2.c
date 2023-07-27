@@ -6,7 +6,7 @@
  *
  * Return: 1 if the memory was freed successfully, otherwise 0.
  */
-#include "shell.h"
+
 
 int bfree(void **ptr)
 {
@@ -14,8 +14,8 @@ int bfree(void **ptr)
 	{
 		free(*ptr);
 		*ptr = NULL;
-		return 1;
+		return (1);
 	}
-	return 0;
+	return (0);
 }
 
