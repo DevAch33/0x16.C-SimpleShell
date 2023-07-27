@@ -65,7 +65,7 @@ size_t print_list(const list_t *h)
 
 	while (h)
 	{
-		_puts(convert_number(h->num, 10, 0));
+		_puts(convert_number(h->nbr, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(h->st ? h->st : "(nil)");
@@ -90,7 +90,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 
 	while (node)
 	{
-		p = node_starts_with(node->st, prefix);
+		p = starts_with(node->st, prefix);
 		if (p && ((c == -1) || (*p == c)))
 			return (node);
 		node = node->next;
