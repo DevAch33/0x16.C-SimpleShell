@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  *_puts - prints an input string
  *@st: the string to be printed
@@ -10,7 +12,7 @@ void _puts(char *st)
 
 	if (!st)
 		return;
-	while (str[i] != '\0')
+	while (st[i] != '\0')
 	{
 		_putchar(st[i]);
 		i++;
