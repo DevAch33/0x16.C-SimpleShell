@@ -225,11 +225,9 @@ char **strtow2(char *, char);
 char *starts_with(const char *, const char *);
 
 /* getLine.c */
-ssize_t input_buf(info_t *, char **, size_t *);
 ssize_t get_input(info_t *);
-ssize_t read_buf(info_t *, char *, size_t *);
 int _getline(info_t *, char **, size_t *);
-void sigintHandler(__attribute__((unused))int sig_num);
+void sigintHandler(int);
 
 
 
