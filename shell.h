@@ -177,8 +177,8 @@ int poplate_env_list(info_t *);
 
 /* env2.c module */
 char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+int unset_env(info_t *, char *);
+int set_env(info_t *, char *, char *);
 
 /* moreFunctions1.c */
 int interactive(info_t *);
