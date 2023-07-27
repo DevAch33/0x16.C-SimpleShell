@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _myenv - Prints the current environment.
+ * _myenv - Prints current environment.
  * @info: Structure containing potential arguments.
- * Return: Always 0.
+ * Return: Always null.
  */
 int _myenv(info_t *info)
 {
