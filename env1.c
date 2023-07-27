@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * _myenv - Prints current environment.
+ * my_env - Prints current environment.
  * @info: Structure containing potential arguments.
  * Return: Always null.
  */
-int _myenv(info_t *info)
+int my_env(info_t *info)
 {
 	print_list_str(info->env);
 	return (0);
 }
 
 /**
- * _getenv - Gets the value of an environment variable.
+ * *_getenv - Gets the value of an environment variable.
  * @info: Structure containing potential arguments.
  * @name: The name of the environment variable.
  *
@@ -34,12 +34,12 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * _mysetenv - Initializes a new envirnment var or modifies an existing one.
+ * my_setenv - Initializes a new envirnment var or modifies an existing one.
  * @info: Structure containing potential arguments.
  *
  * Return: Always 0.
  */
-int _mysetenv(info_t *info)
+int my_setenv(info_t *info)
 {
 	if (info->agc != 3)
 	{
@@ -52,12 +52,12 @@ int _mysetenv(info_t *info)
 }
 
 /**
- * _myunsetenv - Removes an environment variable.
+ * my_unsetenv - Removes an environment variable.
  * @info: Structure containing potential arguments.
  *
  * Return: Always 0.
  */
-int _myunsetenv(info_t *info)
+int my_unsetenv(info_t *info)
 {
 	int i;
 
