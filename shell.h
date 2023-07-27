@@ -117,6 +117,13 @@ void fork_cmd(info_t *);
 /* loophsh.c */
 int loophsh(char **);
 
+/* stringFunctions3.c */
+char *_strncpy(char *, char *, int);
+char *_strncat(char *, char *, int);
+char *_strchr(char *, char);
+void _puts(char *);
+int _putchar(char);
+
 /* Memory function */
 char *_memset(char *, char, unsigned int);
 void *_realloc(void *, unsigned int, unsigned int);
@@ -211,13 +218,6 @@ int _strcmp(char *, char *);
 char *_strcat(char *, const char *);
 char *_strcpy(char *, const char *);
 char *_strdup(const char *);
-
-/* stringFunctions3.c */
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
-void _puts(char *);
-int _putchar(char);
 
 /* stringFunctions4.c */
 char **strtow(char *, char *);
