@@ -96,3 +96,47 @@ int my_help(info_t *info)
 	return (0);
 }
 
+/**
+ * my_history - Displays the history list
+ * @info: Pointer to the structure containing potential arguments.
+ *
+ * Return: Always 0
+ */
+int my_history(info_t *info)
+{
+	print_list(info->history);
+	return (0);
+}
+
+/**
+ * my_alias - Mimics the alias builtin (man alias).
+ * @info: Pointer to the structure containing potential arguments.
+ * Return: Always 0
+ */
+int my_alias(info_t *info)
+{
+	int i = 0;
+	char *p = NULL;
+	list_t *node = NULL;
+
+	if (info->agc == 1)
+	{
+		node = info->alias;
+		while (node)
+		{
+			print_alias(node);
+			node = node->next;
+		}
+		return (0);
+	}
+	for (i = 1; info->agv[i]; i++)
+	{
+		p = strchr(info->agv[i], '=');
+		if (p)
+			set_alias(info, info->agv[i]);
+		else
+			print_alias(node_starts_with(info->alias, info->agv[i], '='));
+	}
+
+	return (0);
+}
