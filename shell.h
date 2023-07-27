@@ -114,8 +114,19 @@ int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
+/* path.c */
+int is_cmd(info_t *, char *);
+char *dup_chars(char *, int, int);
+char *find_path(info_t *, char *, char *);
+
 /* loophsh.c */
 int loophsh(char **);
+
+/* errStrFunctions.c */
+void _eputs(char *);
+int _eputchar(char);
+int _putfd(char c, int fd);
+int _putsfd(char *st, int fd);
 
 /* stringFunctions3.c */
 char *_strncpy(char *, char *, int);
@@ -156,12 +167,6 @@ char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
-
-/* errStrFunctions.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *st, int fd);
 
 /* infoFunctions.c  */
 void clear_info(info_t *);
@@ -207,10 +212,7 @@ int read_history(info_t *info);
 int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
 
-/* path.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+
 
 /* stringFunctions1.c */
 int _strlen(char *);
