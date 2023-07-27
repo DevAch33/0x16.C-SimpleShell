@@ -25,7 +25,7 @@ char *_getenv(info_t *info, const char *name)
 
 	while (node)
 	{
-		p = node_starts_with(node->st, name);
+		p = starts_with(node->st, name);
 		if (p && *p)
 			return (p);
 		node = node->next;
@@ -66,8 +66,8 @@ int _myunsetenv(info_t *info)
 		_eputs("Too few arguments.\n");
 		return (1);
 	}
-	for (i = 1; i < info->agc; i++)
-		_unsetenv(&info->environ, info->agv[i]);
+	for (i = 1; i <= info->agc; i++)
+		_unsetenv(info, info->agv[i]);
 
 	return (0);
 }

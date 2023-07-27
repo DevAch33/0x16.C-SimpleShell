@@ -15,6 +15,7 @@
 /* Buffers */
 #define BUF_FLUSH -1
 #define WRITE_BUF_SIZE 1024
+#define READ_BUF_SIZE 1024
 
 /* Chaining Commands */
 #define CMD_NORM	0
@@ -25,6 +26,15 @@
 /* converting number() */
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
+
+/* 1 if using system getline() */
+#define USE_GETLINE 0
+#define USE_STRTOK 0
+
+#define HIST_FILE	".simple_shell_history"
+#define HIST_MAX	4096
+
+extern char **environ;
 
 /**
  * struct liststr - singly linked list
@@ -190,6 +200,13 @@ void print_error(info_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
+
+/*iofunction.c */
+char *get_history_file(info_t *info);
+int write_history(info_t *info);
+int read_history(info_t *info);
+int build_history_list(info_t *info, char *buf, int linecount);
+int renumber_history(info_t *info);
 
 /* path.c */
 int is_cmd(info_t *, char *);
