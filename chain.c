@@ -78,7 +78,7 @@ int replace_alias(info_t *info)
 {
 	int i;
 	list_t *node;
-	char *p
+	char *p;
 
     for (i = 0; i < 10; i++)
     {
