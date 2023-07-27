@@ -92,16 +92,6 @@ int print_d(int input, int fd)
  */
 char *convert_number(long int num, int base, int flags)
 {
-	/**
- * convert_number - converter function, a clone of itoa
- * @num: number
- * @base: base
- * @flags: argument flags
- *
- * Return: string
- */
-char *convert_number(long int num, int base, int flags)
-{
 	static char *array;
 	static char buffer[50];
 	char sign = 0;
