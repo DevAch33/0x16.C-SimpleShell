@@ -2,20 +2,25 @@
 #define SHELL_H
 
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <string.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <limits.h>
-#include <errno.h>
-#include <fcntl.h>
+
 
 /* Buffers */
 #define BUF_FLUSH -1
-#define WRITE_BUF_SIZE 1024
 #define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+
+/* converting number() */
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED	2
 
 /* Chaining Commands */
 #define CMD_NORM	0
@@ -23,35 +28,30 @@
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
-/* converting number() */
-#define CONVERT_LOWERCASE	1
-#define CONVERT_UNSIGNED	2
-
 /* 1 if using system getline() */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
+#define HIST_FILE	".simple_shell_history"
 
 extern char **environ;
 
 /**
- * struct liststr - singly linked list
- * @no: the number field
- * @st: a string
- * @next: points to the next node
+ * struct liststr - Singly linked list
+ * @nbr: the number field
+ * @st: string
+ * @next: the next node point
  */
 typedef struct liststr
 {
-	int no;
+	int nbr;
 	char *st;
 	struct liststr *next;
 } list_t;
 
 /**
- * struct passinfo - contains pseudo-arguements to pass into a function,
- * allowing uniform prototype for function pointer struct
+ * struct passinfo - contains pseudo-arguements to pass into a function.
  * @ag: a string generated from getline containing arguments
  * @agv: an array of strings generated from ag
  * @path: a string path for the current command
@@ -98,7 +98,7 @@ typedef struct passinfo
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
 /**
- *struct builtin - contains a builtin string and related function
+ *struct builtin - contains a related function and builtin string 
  *@type: the builtin command flag
  *@func: the function
  */
@@ -114,12 +114,8 @@ int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
-/* string.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *_strcat(char *, const char *);
-char *_strcpy(char *, const char *);
-char *_strdup(const char *);
+/* loophsh.c */
+int loophsh(char **);
 
 /* Memory function */
 char *_memset(char *, char, unsigned int);
@@ -152,13 +148,6 @@ char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
-
-/* strFunctions2.c */
-char *_strcpy(char *, char *)
-char *_strdup(const char *)
-void _eputs(char *);
-int _eputchar(char);
-char **strtow(char *, char *);
 
 /* errStrFunctions.c */
 void _eputs(char *);
@@ -215,6 +204,13 @@ int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
+/* stringFunctions1.c */
+int _strlen(char *);
+int _strcmp(char *, char *);
+char *_strcat(char *, const char *);
+char *_strcpy(char *, const char *);
+char *_strdup(const char *);
+
 /* stringFunctions3.c */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
@@ -223,6 +219,7 @@ char *_strchr(char *, char);
 /* stringFunctions4.c */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
+char *starts_with(const char *, const char *);
 
 /* getLine.c */
 ssize_t input_buf(info_t *, char **, size_t *);
@@ -231,13 +228,7 @@ ssize_t read_buf(info_t *, char *, size_t *);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(__attribute__((unused))int sig_num);
 
-/* stringFunctions1.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *_strcat(char *, const char *);
-char *_strcpy(char *, const char *);
-char *_strdup(const char *);
-char *starts_with(const char *, const char *);
+
 
 #endif
 
