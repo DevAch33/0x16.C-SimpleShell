@@ -128,7 +128,7 @@ int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *st, int fd);
 
-/* stringFunctions3.c */
+/* stringFunctions2.c */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
