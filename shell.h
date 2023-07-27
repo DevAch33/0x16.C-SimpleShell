@@ -127,13 +127,14 @@ int bfree(void **);
 int my_exit(info_t *);
 int my_cd(info_t *);
 int my_help(info_t *);
+int my_history(info_t *);
+int my_alias(info_t *);
 
 /* builtin_emulators2.c */
-int my_history(info_t *);
 int uset_alias(info_t *, char *);
 int set_alias(info_t *, char *);
 int print_alias(list_t *);
-int my_alias(info_t *);
+
 
 /* strList1.c module */
 list_t *add_node(list_t **, const char *, int);
