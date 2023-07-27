@@ -138,8 +138,10 @@ list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* strFunctions2.c */
-void _puts(char *);
-int _putchar(char);
+char *_strcpy(char *, char *)
+char *_strdup(const char *)
+void _eputs(char *);
+int _eputchar(char);
 char **strtow(char *, char *);
 
 /* errStrFunctions.c */
@@ -205,6 +207,14 @@ ssize_t get_input(info_t *);
 ssize_t read_buf(info_t *, char *, size_t *);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(__attribute__((unused))int sig_num);
+
+/* stringFunctions1.c */
+int _strlen(char *);
+int _strcmp(char *, char *);
+char *_strcat(char *, const char *);
+char *_strcpy(char *, const char *);
+char *_strdup(const char *);
+char *starts_with(const char *, const char *);
 
 #endif
 
